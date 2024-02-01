@@ -1,0 +1,64 @@
+.container {
+    display: inline-block;
+    width: 100%;
+}
+
+.menu > ul {
+    display: inline-block;
+    width: 100%;
+    list-style-type: none;
+}
+
+    .menu > ul > li {
+        float: left;
+        margin: 0 10px;
+    }
+
+        .menu > ul > li > a {
+            text-decoration: none;
+            color: blue;
+        }
+
+.grid,
+.grid > .row {
+    display: inline-block;
+    width: 100%;
+    margin: 2px 0;
+}
+
+.row > .col-1 {
+    float: left;
+    width: 150px;
+}
+
+.row > .col-2 {
+    float: left;
+    width: 300px;
+}
+
+.row > .col-3 {
+    float: left;
+    width: 450px;
+}
+
+.row > .col-4 {
+    float: left;
+    width: 600px;
+}
+
+.row input[type=text],
+.row input[type=password] {
+    width: 100%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.b {
+    font-weight: bold;
+}

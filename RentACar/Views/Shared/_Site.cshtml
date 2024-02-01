@@ -1,0 +1,55 @@
+﻿@using RentACar.Extentions;
+@using RentACar.Entities;
+@{
+    Manager loggedManager = this.ViewContext.HttpContext.Session.GetObject<Manager>("loggedManager");
+}
+<html>
+<head>
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+    <title>Best car Renters</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="left">Rent a car</h1>
+        <div class="right">
+            Hello, <span class="b">
+                @(loggedManager == null
+                    ? "Annonymous"
+                    : loggedManager.FirstName +' '+ loggedManager.LastName)
+            </span>
+        </div>
+    </div>
+    <div class="container menu">
+        <ul>
+            <li>
+                <a href="/Home/Index">HOME</a>
+            </li>
+            @if (loggedManager != null)
+            {
+                <li>
+                    <a href="/Users/Index">USERS</a>
+                </li>
+                <li>
+                    <a href="/Cars/Index">CARS</a>
+                </li>
+
+                <li>
+                    <a href="/Home/Logout">LOGOUT</a>
+                </li>
+            }
+            else
+            {
+                
+                <li>
+                    <a href="/Home/Login">LOGIN</a>
+                </li>
+            }
+            
+            
+        </ul>
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@model RentACar.ViewModels.Users.EditVM
+<form action="/Users/Edit" method="post">
+    @Html.HiddenFor(m => m.Id)
+    <div class="grid">
+        <div class="row">
+            <div class="col-1">FirstName:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.FirstName)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">LastName:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.LastName)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">EGN:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.EGN)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.EGN)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">PhoneNumber:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.PhoneNumber)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.PhoneNumber)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <input class="right" type="submit" value="Save" />
+                <a class="right" href="/Users/Index">Back</a>
+            </div>
+        </div>
+    </div>
+</form>

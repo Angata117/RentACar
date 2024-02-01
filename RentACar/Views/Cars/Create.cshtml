@@ -1,0 +1,62 @@
+﻿@model RentACar.ViewModels.Cars.CreateVM
+<form action="/Cars/Create" method="post">
+    <div class="grid">
+        <div class="row">
+            <div class="col-1">Brand:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.Brand)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.Brand)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">Model:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.Model)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.Model)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">License plate:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.LicensePlate)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.LicensePlate)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">Mileage:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.Mileage)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.Mileage)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">Damage:</div>
+            <div class="col-2">
+                @Html.TextAreaFor(m => m.Damage)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">Price per day:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.PricePerDay)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.PricePerDay)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <input class="right" type="submit" value="Save" />
+                <a class="right" href="/Cars/Index">Back</a>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,77 @@
+﻿@model RentACar.ViewModels.Users.IndexVM
+<div class="grid">
+    <div class="row">
+        <div class="col-2">
+            <a href="/Users/Create">NEW</a>
+        </div>
+    </div>
+    <div class="row">
+        <form action="/Users/Index" method="get">
+            <div class="grid">
+                <div class="row">
+                    <div class="col-1">@Html.LabelFor(m => m.FirstName)</div>
+                    <div class="col-2">@Html.TextBoxFor(m => m.FirstName)</div>
+                </div>
+                <div class="row">
+                    <div class="col-1">@Html.LabelFor(m => m.LastName)</div>
+                    <div class="col-2">@Html.TextBoxFor(m => m.LastName)</div>
+                </div>
+                <div class="row">
+                    <div class="col-1">@Html.LabelFor(m => m.EGN)</div>
+                    <div class="col-2">@Html.TextBoxFor(m => m.EGN)</div>
+                </div>
+                <div class="row">
+                    <div class="col-1">@Html.LabelFor(m => m.PhoneNumber)</div>
+                    <div class="col-2">@Html.TextBoxFor(m => m.PhoneNumber)</div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <input type="submit" value="Filter" />
+                        <a href="/Users/Index">Clear</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-1">First Name</div>
+        <div class="col-1">Last Name</div>
+        <div class="col-1">EGN</div>
+        <div class="col-1">Phone number</div>
+    </div>
+    @foreach (var item in Model.Items)
+    {
+        <div class="row">
+            <div class="col-1">@item.FirstName</div>
+            <div class="col-1">@item.LastName</div>
+            <div class="col-1">@item.EGN</div>
+            <div class="col-1">@item.PhoneNumber</div>
+            <div class="col-2">
+                <a href="/Users/Edit?id=@item.Id">edit</a>
+                <a href="/Users/Delete?id=@item.Id"
+                   onclick="return confirm('Delete item?')">delete</a>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <script>
+            function ddlItemsPerPage_OnChange() {
+
+                var selectedValue = document.getElementById("ddlItemsPerPage").value;
+
+                document.location.href = "/Users/Index?FirstName=@(Model.FirstName)&LastName=@(Model.LastName)&EGN=@(Model.EGN)&PhoneNumber=@(Model.PhoneNumber)&ItemsPerPage=" + selectedValue;
+            }
+        </script>
+        <div class="col-3">
+            @for (int i = 0; i < Model.PagesCount; i++)
+            {
+                <a href="/Users/Index?FirstName=@(Model.FirstName)&LastName=@(Model.LastName)&EGN=@(Model.EGN)&PhoneNumber=@(Model.PhoneNumber)&Page=@(i+1)&ItemsPerPage=@Model.ItemsPerPage">@(i + 1)</a>
+            }
+            <select id="ddlItemsPerPage" onchange="ddlItemsPerPage_OnChange()">
+                <option value="2" @(Model.ItemsPerPage == 2 ? "selected" : "")>2</option>
+                <option value="5" @(Model.ItemsPerPage == 5 ? "selected" : "")>5</option>
+                <option value="10" @(Model.ItemsPerPage == 10 ? "selected" : "")>10</option>
+            </select>
+        </div>
+    </div>
+</div>
