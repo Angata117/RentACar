@@ -19,7 +19,7 @@ namespace RentACar.Migrations
                     Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LicensePlate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Mileage = table.Column<int>(type: "int", nullable: false),
-                    Damage = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Damage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PricePerDay = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>

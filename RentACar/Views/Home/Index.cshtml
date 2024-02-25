@@ -1,4 +1,77 @@
-﻿<p>
-    This is a Rent a car system built as course work of the
-    ASP.NET MVC Core course @@FMI Plovdiv
-</p>
+﻿@model RentACar.ViewModels.Home.IndexVM
+
+<div class="grid">
+    <div class="row">
+        <form action="/Cars/Index" method="get">
+            <div class="grid">
+                <div class="row">
+                    <div class="col-2">Search car by:</div>
+                </div>
+                <div class="row">
+                    <div class="col-1">@Html.LabelFor(m => m.Brand)</div>
+                    <div class="col-2">@Html.TextBoxFor(m => m.Brand)</div>
+                </div>
+                <div class="row">
+                    <div class="col-1">@Html.LabelFor(m => m.Model)</div>
+                    <div class="col-2">@Html.TextBoxFor(m => m.Model)</div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <input type="submit" value="Filter" />
+                        <a href="/Cars/Index">Clear</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="center">All available cars at this moment</div>
+    <div class="row">
+        <div class="col-1">Brand</div>
+        <div class="col-1">Model</div>
+        <div class="col-1">License plate</div>
+        <div class="col-1">Mileage</div>
+        <div class="col-1">Damage</div>
+        <div class="col-1">Price per day</div>
+    </div>
+    @foreach (var item in Model.Items)
+    {
+        <div class="row">
+            <div class="col-1">@item.Brand</div>
+            <div class="col-1">@item.Model</div>
+            <div class="col-1">@item.LicensePlate</div>
+            <div class="col-1">@item.Mileage</div>
+            <div class="col-1">
+                @if (@item.Damage == null)
+                {
+                    <a>-</a>
+                }
+                else
+                {
+                    @item.Damage
+                }
+            </div>
+            <div class="col-1">@item.PricePerDay</div>
+        </div>
+    }
+    <div class="row">
+        <script>
+            function ddlItemsPerPage_OnChange() {
+
+                var selectedValue = document.getElementById("ddlItemsPerPage").value;
+
+                document.location.href = "/Cars/Index?Brand=@(Model.Brand)&Model=@(Model.Model)&LicensePlate=@(Model.LicensePlate)&ItemsPerPage=" + selectedValue;
+            }
+        </script>
+        <div class="col-3">
+            @for (int i = 0; i < Model.PagesCount; i++)
+            {
+                <a href="/Cars/Index?Brand=@(Model.Brand)&Model=@(Model.Model)&LicensePlate=@(Model.LicensePlate)&Page=@(i+1)&ItemsPerPage=@Model.ItemsPerPage">@(i + 1)</a>
+            }
+            <select id="ddlItemsPerPage" onchange="ddlItemsPerPage_OnChange()">
+                <option value="2" @(Model.ItemsPerPage == 2 ? "selected" : "")>2</option>
+                <option value="5" @(Model.ItemsPerPage == 5 ? "selected" : "")>5</option>
+                <option value="10" @(Model.ItemsPerPage == 10 ? "selected" : "")>10</option>
+            </select>
+        </div>
+    </div>
+</div>

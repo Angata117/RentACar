@@ -1,0 +1,38 @@
+﻿@model RentACar.ViewModels.Cars.RentCarVM
+@using RentACar.Extentions;
+@using RentACar.Entities;
+@{
+    Manager loggedManager = this.ViewContext.HttpContext.Session.GetObject<Manager>("loggedManager");
+
+}
+<form action="/Cars/Rent" method="post">
+    @Html.HiddenFor(m => m.CarId)
+    @Html.HiddenFor(m => m.ManagerId)
+    
+    <div class="grid">
+        <div class="row">
+            <div class="col-1">Days rented for:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.DaysRentedFor)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.DaysRentedFor)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">Renter id:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.UserId)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.UserId)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <input class="right" type="submit" value="Save" />
+                <a class="right" href="/Cars/Index">Back</a>
+            </div>
+        </div>
+    </div>
+</form>

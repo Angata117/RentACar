@@ -20,4 +20,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\RentCar\" />
+    <Folder Include="Views\RentCar\" />
+  </ItemGroup>
+
 </Project>

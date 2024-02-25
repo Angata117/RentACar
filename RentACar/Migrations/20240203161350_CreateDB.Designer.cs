@@ -12,7 +12,7 @@ using RentACar.Repositories;
 namespace RentACar.Migrations
 {
     [DbContext(typeof(RentACarDbContext))]
-    [Migration("20240128190949_CreateDB")]
+    [Migration("20240203161350_CreateDB")]
     partial class CreateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,6 @@ namespace RentACar.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Damage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LicensePlate")

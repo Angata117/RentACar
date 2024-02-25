@@ -67,6 +67,7 @@ namespace RentACar.Controllers
             model.LastName = editUser.LastName;
             model.EGN = editUser.EGN;
             model.PhoneNumber = editUser.PhoneNumber;
+            
 
             return View(model);
         }

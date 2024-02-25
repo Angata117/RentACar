@@ -35,7 +35,6 @@ namespace RentACar.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Damage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LicensePlate")

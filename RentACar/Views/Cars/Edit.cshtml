@@ -1,0 +1,36 @@
+﻿@model RentACar.ViewModels.Cars.EditVM
+<form action="/Cars/Edit" method="post">
+    @Html.HiddenFor(m => m.Id)
+    <div class="grid">
+        <div class="row">
+            <div class="col-1">Mileage:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.Mileage)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.Mileage)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">Car damage:</div>
+            <div class="col-2">
+                @Html.TextAreaFor(m => m.Damage)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">Price per day:</div>
+            <div class="col-2">
+                @Html.TextBoxFor(m => m.PricePerDay)
+            </div>
+            <div>
+                @Html.ValidationMessageFor(m => m.PricePerDay)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <input class="right" type="submit" value="Save" />
+                <a class="right" href="/Cars/Index">Back</a>
+            </div>
+        </div>
+    </div>
+</form>

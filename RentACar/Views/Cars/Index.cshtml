@@ -44,7 +44,13 @@
             <div class="col-1">@item.Model</div>
             <div class="col-1">@item.LicensePlate</div>
             <div class="col-1">@item.Mileage</div>
-            <div class="col-1">@item.Damage</div>
+            <div class="col-1">
+                @if (@item.Damage == null) 
+                {<a>-</a>} 
+                else{
+                    @item.Damage
+                }
+            </div>
             <div class="col-1">@item.PricePerDay</div>
             <div class="col-2">
                 <a href="/Cars/Edit?id=@item.Id">edit</a>

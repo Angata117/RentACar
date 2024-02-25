@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RentACar.Entities;
+using System.Xml;
 
 namespace RentACar.Repositories
 {
@@ -42,6 +43,10 @@ namespace RentACar.Repositories
             modelBuilder.Entity<User>()
                 .HasIndex(nameof(User.EGN), nameof(User.PhoneNumber))
                 .IsUnique();
+            modelBuilder.Entity<Car>(car =>
+            {
+                car.Property(e => e.Damage).IsRequired(false); // Не е задължително, може да бъде пропуснато
+            });
         }
     }
 }

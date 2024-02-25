@@ -11,11 +11,11 @@ namespace RentACar.ViewModels.Cars
         [Required(ErrorMessage = "This field is Required!")]
         public string LicensePlate { get; set; }
         [Required(ErrorMessage = "This field is Required!")]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "This field is only for digits.")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "This field is only for digits!")]
         public int Mileage { get; set; }
-        public string Damage { get; set; }
+        public string? Damage { get; set; }
         [Required(ErrorMessage = "This field is Required!")]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "This field is only for digits.")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "This field is only for digits!")]
         public double PricePerDay { get; set; }
     }
 }
